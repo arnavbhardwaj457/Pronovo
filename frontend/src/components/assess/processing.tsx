@@ -7,108 +7,79 @@ interface ProcessingProps {
   stage: ProcessingStage;
 }
 
-const stages: {
-  key: ProcessingStage;
-  label: string;
-  description: string;
-}[] = [
-  {
-    key: "uploading",
-    label: "Uploading",
-    description: "Sending your audio to the analysis server...",
-  },
-  {
-    key: "analyzing",
-    label: "Analyzing Speech",
-    description: "Azure Speech AI is processing your pronunciation...",
-  },
-  {
-    key: "scoring",
-    label: "Scoring",
-    description: "Calculating accuracy, fluency, and prosody scores...",
-  },
-  {
-    key: "generating",
-    label: "Generating Feedback",
-    description: "AI is creating personalized coaching suggestions...",
-  },
+const stages: { key: ProcessingStage; label: string }[] = [
+  { key: "uploading", label: "Uploading audio" },
+  { key: "analyzing", label: "Analyzing speech patterns" },
+  { key: "scoring", label: "Computing scores" },
+  { key: "generating", label: "Generating feedback" },
 ];
 
 export function Processing({ stage }: ProcessingProps) {
   const currentIndex = stages.findIndex((s) => s.key === stage);
 
   return (
-    <div className="mx-auto max-w-md py-12">
-      <div className="text-center mb-10">
-        {/* Animated pulse */}
-        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center">
-          <div className="absolute h-16 w-16 rounded-full bg-violet-500/20 animate-ping" />
-          <div className="relative h-10 w-10 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
-            <svg className="h-5 w-5 text-white animate-spin" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+    <div className="py-12">
+      <div className="mx-auto max-w-xs">
+        {/* Spinner */}
+        <div className="flex justify-center mb-6">
+          <div className="relative h-10 w-10">
+            <svg className="h-10 w-10 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" className="text-border" />
+              <path
+                d="M12 2a10 10 0 019.95 9"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                className="text-primary"
+              />
             </svg>
           </div>
         </div>
-        <h3 className="text-lg font-semibold">Analyzing your pronunciation</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
-          This typically takes 10-20 seconds
+
+        <p className="text-center text-[13px] font-medium mb-1">
+          Processing your audio
         </p>
-      </div>
+        <p className="text-center text-[11px] text-muted-foreground mb-8">
+          This typically takes 15–25 seconds
+        </p>
 
-      {/* Stage list */}
-      <div className="space-y-3">
-        {stages.map((s, index) => {
-          const isActive = s.key === stage;
-          const isComplete = index < currentIndex;
+        {/* Progress steps */}
+        <div className="space-y-1">
+          {stages.map((s, i) => {
+            const isActive = s.key === stage;
+            const isComplete = i < currentIndex;
 
-          return (
-            <div
-              key={s.key}
-              className={cn(
-                "flex items-center gap-3 rounded-xl border px-4 py-3 transition-all duration-500",
-                isActive
-                  ? "border-violet-500/30 bg-violet-500/5"
-                  : isComplete
-                    ? "border-emerald-500/20 bg-emerald-500/5"
-                    : "border-border/30 opacity-40"
-              )}
-            >
-              {/* Status indicator */}
-              <div className="shrink-0">
-                {isComplete ? (
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            return (
+              <div
+                key={s.key}
+                className={cn(
+                  "flex items-center gap-2.5 rounded-md px-3 py-2 text-[12px] transition-all duration-300",
+                  isActive && "bg-primary/5 text-foreground font-medium",
+                  isComplete && "text-muted-foreground",
+                  !isActive && !isComplete && "text-muted-foreground/40"
+                )}
+              >
+                {/* Icon */}
+                <div className="shrink-0">
+                  {isComplete ? (
+                    <svg className="h-3.5 w-3.5 text-emerald-500" viewBox="0 0 16 16" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.416 3.376a.75.75 0 01.208 1.04l-5 7.5a.75.75 0 01-1.154.114l-3-3a.75.75 0 011.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 011.04-.207z" clipRule="evenodd" />
                     </svg>
-                  </div>
-                ) : isActive ? (
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-500/20">
-                    <div className="h-2 w-2 rounded-full bg-violet-400 animate-pulse" />
-                  </div>
-                ) : (
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-muted/30">
-                    <div className="h-2 w-2 rounded-full bg-muted-foreground/30" />
-                  </div>
-                )}
+                  ) : isActive ? (
+                    <div className="h-3.5 w-3.5 flex items-center justify-center">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                    </div>
+                  ) : (
+                    <div className="h-3.5 w-3.5 flex items-center justify-center">
+                      <div className="h-1 w-1 rounded-full bg-muted-foreground/30" />
+                    </div>
+                  )}
+                </div>
+                {s.label}
               </div>
-
-              <div className="min-w-0">
-                <p className={cn(
-                  "text-sm font-medium",
-                  isComplete && "text-emerald-400"
-                )}>
-                  {s.label}
-                </p>
-                {isActive && (
-                  <p className="text-xs text-muted-foreground mt-0.5 animate-in fade-in duration-500">
-                    {s.description}
-                  </p>
-                )}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -1,146 +1,116 @@
 import Link from "next/link";
 
-const features = [
-  {
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-      </svg>
-    ),
-    title: "Phoneme-Level Analysis",
-    description: "Every sound you make is individually scored. See exactly which phonemes need work and how to improve them.",
-  },
-  {
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-      </svg>
-    ),
-    title: "Multi-Dimensional Scoring",
-    description: "Get scored on accuracy, fluency, completeness, and prosody — the four pillars of natural speech.",
-  },
-  {
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-      </svg>
-    ),
-    title: "AI-Powered Coaching",
-    description: "Receive personalized feedback from AI that identifies patterns, suggests exercises, and tracks your strengths.",
-  },
-  {
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-      </svg>
-    ),
-    title: "Privacy-First Design",
-    description: "Audio is processed in-memory and immediately discarded. Zero data retention. DPDP Act compliant.",
-  },
-];
-
 export default function Home() {
   return (
     <div className="relative">
-      {/* Hero Section */}
+      {/* ── Hero ────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        {/* Gradient background effects */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-violet-500/10 blur-[120px]" />
-          <div className="absolute top-40 left-1/4 h-[300px] w-[400px] rounded-full bg-indigo-500/8 blur-[100px]" />
-          <div className="absolute top-20 right-1/4 h-[250px] w-[350px] rounded-full bg-purple-500/8 blur-[100px]" />
-        </div>
+        {/* Background: dot grid + subtle glow */}
+        <div className="absolute inset-0 -z-10 dot-grid" />
+        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-primary/5 blur-[140px] -z-10" />
 
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
-          <div className="text-center">
-            {/* Badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/50 bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              Powered by Azure Speech AI & Gemini
-            </div>
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-20 pb-16 sm:pt-28 sm:pb-24">
+          {/* Version badge */}
+          <div className="mb-8 flex justify-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-[12px] font-medium text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              v1.0 — Open source
+            </span>
+          </div>
 
-            {/* Headline */}
-            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-              Perfect your{" "}
-              <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
-                pronunciation
-              </span>
-              <br />
-              with AI precision
-            </h1>
+          {/* Headline — short, confident, no fluff */}
+          <h1 className="text-center text-[clamp(2.25rem,5vw,4rem)] font-bold leading-[1.1] tracking-[-0.03em]">
+            Understand how you
+            <br />
+            <span className="text-primary">actually sound</span>
+          </h1>
 
-            {/* Subheadline */}
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-              Upload a 30–45 second English audio recording and receive instant,
-              phoneme-level pronunciation feedback with personalized coaching.
-            </p>
+          <p className="mx-auto mt-5 max-w-[540px] text-center text-[15px] leading-relaxed text-muted-foreground">
+            Upload a short English recording. Get phoneme-level scores,
+            word-by-word breakdowns, and actionable tips to improve
+            your pronunciation — in under 30 seconds.
+          </p>
 
-            {/* CTA */}
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Link
-                href="/assess"
-                className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:shadow-xl hover:shadow-violet-500/30 hover:brightness-110"
-              >
-                Start Assessment
-                <svg
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </Link>
-              <span className="text-sm text-muted-foreground">
-                No account required · Free to use
-              </span>
-            </div>
+          {/* CTA */}
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <Link
+              href="/assess"
+              className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-5 text-[13px] font-semibold text-primary-foreground shadow-sm transition-all hover:opacity-90 active:scale-[0.98]"
+            >
+              Try it now
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+            <a
+              href="https://github.com/arnavbhardwaj457/Pronovo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 items-center gap-2 rounded-lg border border-border px-5 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            >
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              View source
+            </a>
+          </div>
 
-            {/* Audio wave animation */}
-            <div className="mt-16 flex items-center justify-center gap-1" aria-hidden>
-              {Array.from({ length: 40 }).map((_, i) => (
+          {/* Audio visualizer — minimal, just a tasteful accent */}
+          <div className="mt-14 flex items-end justify-center gap-[3px] h-10 opacity-40" aria-hidden>
+            {Array.from({ length: 48 }).map((_, i) => {
+              const h = Math.abs(Math.sin(i * 0.35)) * 100;
+              return (
                 <div
                   key={i}
-                  className="w-1 rounded-full bg-gradient-to-t from-violet-500/40 to-indigo-500/40"
+                  className="w-[2px] rounded-full bg-primary/60"
                   style={{
-                    height: `${Math.max(8, Math.sin(i * 0.4) * 30 + Math.random() * 20)}px`,
-                    animation: `wave ${1.5 + Math.random() * 0.5}s ease-in-out ${i * 0.05}s infinite alternate`,
+                    height: `${Math.max(8, h)}%`,
+                    animation: `wave 2.4s ease-in-out ${i * 0.04}s infinite`,
                   }}
                 />
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="border-t border-border/40 bg-card/30">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Enterprise-grade speech analysis
-            </h2>
-            <p className="mt-3 text-muted-foreground">
-              Built with the same technology used by language learning platforms worldwide.
+      {/* ── How it works ─────────────────────── */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-24">
+          <div className="mb-12 text-center">
+            <p className="text-[12px] font-semibold uppercase tracking-widest text-primary mb-2">
+              How it works
             </p>
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              Three steps, zero friction
+            </h2>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="group relative rounded-2xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-violet-500/30 hover:bg-card/80 hover:shadow-lg hover:shadow-violet-500/5"
-              >
-                <div className="mb-4 inline-flex rounded-xl bg-violet-500/10 p-3 text-violet-400 transition-colors group-hover:bg-violet-500/15">
-                  {feature.icon}
-                </div>
-                <h3 className="mb-2 text-sm font-semibold">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
+          <div className="grid gap-px sm:grid-cols-3 bg-border rounded-xl overflow-hidden">
+            {[
+              {
+                step: "01",
+                title: "Upload",
+                desc: "Record or upload a 30–45 second English audio clip. WAV, MP3, M4A, and more.",
+              },
+              {
+                step: "02",
+                title: "Analyze",
+                desc: "Azure Speech AI scores every phoneme. Gemini generates personalized feedback.",
+              },
+              {
+                step: "03",
+                title: "Improve",
+                desc: "See word-by-word scores, tap into phoneme breakdowns, follow coaching tips.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="bg-background p-6 sm:p-8">
+                <span className="text-[11px] font-bold tracking-widest text-primary/60 uppercase">
+                  Step {item.step}
+                </span>
+                <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+                  {item.desc}
                 </p>
               </div>
             ))}
@@ -148,20 +118,91 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border/40">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <div className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-violet-500 to-indigo-600 text-[10px] font-bold text-white">
-                P
+      {/* ── Technical highlights ──────────────── */}
+      <section className="border-t border-border bg-card/40">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-24">
+          <div className="mb-12 text-center">
+            <p className="text-[12px] font-semibold uppercase tracking-widest text-primary mb-2">
+              Under the hood
+            </p>
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              Built for quality, not demos
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 stagger">
+            {[
+              {
+                title: "Phoneme-level granularity",
+                desc: "Not just word scores. Every individual sound is assessed using Azure's pronunciation assessment engine — the same technology behind language learning platforms.",
+                tag: "Azure Speech SDK",
+              },
+              {
+                title: "AI coaching, not just scores",
+                desc: "Gemini 2.5 Flash analyzes patterns across your results to generate specific, actionable feedback. It identifies L1 interference patterns and suggests targeted exercises.",
+                tag: "Gemini 2.5 Flash",
+              },
+              {
+                title: "Privacy by architecture",
+                desc: "Audio is processed in-memory and immediately discarded. No database, no file storage, no accounts. The safest data is data you never store.",
+                tag: "DPDP Compliant",
+              },
+              {
+                title: "Production engineering",
+                desc: "TypeScript end-to-end, Zod validation, structured logging, rate limiting, LLM fallbacks, retry with backoff. Not a hackathon project.",
+                tag: "Full Stack",
+              },
+            ].map((feature) => (
+              <div
+                key={feature.title}
+                className="card-glow group rounded-xl border border-border bg-background p-5 sm:p-6 transition-all animate-fade-up"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="rounded-md bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">
+                    {feature.tag}
+                  </span>
+                </div>
+                <h3 className="text-[15px] font-semibold mb-1.5">{feature.title}</h3>
+                <p className="text-[13px] leading-relaxed text-muted-foreground">
+                  {feature.desc}
+                </p>
               </div>
-              <span>Pronovo</span>
-              <span className="mx-1">·</span>
-              <span>Built by Arnav</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA strip ────────────────────────── */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-20 text-center">
+          <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
+            Ready to hear the truth?
+          </h2>
+          <p className="mt-2 text-[14px] text-muted-foreground">
+            It takes less than a minute. No sign-up required.
+          </p>
+          <Link
+            href="/assess"
+            className="mt-6 inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-6 text-[13px] font-semibold text-primary-foreground shadow-sm transition-all hover:opacity-90 active:scale-[0.98]"
+          >
+            Start assessment
+          </Link>
+        </div>
+      </section>
+
+      {/* ── Footer ───────────────────────────── */}
+      <footer className="border-t border-border">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6">
+          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row text-[12px] text-muted-foreground">
+            <div className="flex items-center gap-1.5">
+              <svg width="14" height="14" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="6" className="fill-primary" />
+                <path d="M10 22V10h4.5c1.4 0 2.5.35 3.3 1.05.8.7 1.2 1.65 1.2 2.85 0 1.2-.4 2.15-1.2 2.85-.8.7-1.9 1.05-3.3 1.05H13v4.2H10z" className="fill-primary-foreground" />
+              </svg>
+              <span>Pronovo · Built by Arnav</span>
             </div>
-            <p className="text-xs text-muted-foreground/60">
-              Audio is processed in-memory and never stored. DPDP Act compliant.
+            <p className="text-muted-foreground/60">
+              Audio processed in-memory. Never stored. DPDP Act compliant.
             </p>
           </div>
         </div>
